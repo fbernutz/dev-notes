@@ -2,7 +2,59 @@
 
 My personal list of things I once learned in iOS, Swift, CocoaPods and git (etc.) and do not want to forget. The list is not ordered by any kind of type – only thought about some things and wrote them down.
 
-# #1 [iOS] Target Environment Simulator
+## Table of contents
+
+[[iOS] Target Environment Simulator](https://github.com/fbernutz/dev-notes#ios-target-environment-simulator)
+
+[[Xcode] Weird problems with IBDesignable](https://github.com/fbernutz/dev-notes#xcode-weird-problems-with-ibdesignable)
+
+[[iOS] Delay requests while searching using GCD](https://github.com/fbernutz/dev-notes#ios-delay-requests-while-searching-using-gcd)
+
+[[iOS] WebViewController](https://github.com/fbernutz/dev-notes#ios-webviewcontroller)
+
+[[iOS] Common Mistakes with Custom Fonts](https://github.com/fbernutz/dev-notes#ios-common-mistakes-with-custom-fonts)
+
+[[iOS] IBOutletCollection](https://github.com/fbernutz/dev-notes#ios-iboutletcollection)
+
+[[iOS] `debugPrint` in release environment](https://github.com/fbernutz/dev-notes#ios-debugprint-in-release-environment)
+
+[[Xcode] Set version number without fastlane](https://github.com/fbernutz/dev-notes#xcode-set-version-number-without-fastlane)
+
+[[iOS] Check for email addresses in String](https://github.com/fbernutz/dev-notes#ios-check-for-email-addresses-in-string)
+
+[[cocoapods] Using versions for pods](https://github.com/fbernutz/dev-notes#cocoapods-using-versions-for-pods)
+
+[[git] Rebase](https://github.com/fbernutz/dev-notes#git-rebase)
+
+[[git] Squash](https://github.com/fbernutz/dev-notes#git-squash)
+
+[[git] Useful git commands](https://github.com/fbernutz/dev-notes#git-useful-git-commands)
+
+[[iOS] StackView & Warnings](https://github.com/fbernutz/dev-notes#ios-stackview--warnings)
+
+[[iOS] Find error in plist](https://github.com/fbernutz/dev-notes#ios-find-error-in-plist)
+
+[[iOS] Right and LeftView in UITextField](https://github.com/fbernutz/dev-notes#ios-right-and-leftview-in-uitextfield)
+
+[[iOS] Dispatch Group](https://github.com/fbernutz/dev-notes#ios-dispatch-group)
+
+[[Xcode] po in debugger](https://github.com/fbernutz/dev-notes#xcode-po-in-debugger)
+
+[[iOS] ATS information](https://github.com/fbernutz/dev-notes#ios-ats-information)
+
+[[iOS] Attributed Text Helper](https://github.com/fbernutz/dev-notes#ios-attributed-text-helper)
+
+[[iOS] UITest helper](https://github.com/fbernutz/dev-notes#ios-uitest-helper)
+
+[[iOS] Configure UIKit elements on initializer](https://github.com/fbernutz/dev-notes#ios-configure-uikit-elements-on-initializer)
+
+[[iOS] Simple animation with UIImage](https://github.com/fbernutz/dev-notes#ios-simple-animation-with-uiimage)
+
+[[iOS] UIImage with black & white effect](https://github.com/fbernutz/dev-notes#ios-uiimage-with-black--white-effect)
+
+[[git] Ignore already tracked `XCUserstate`](https://github.com/fbernutz/dev-notes#git-ignore-already-tracked-xcuserstate)
+
+# [iOS] Target Environment Simulator
 Have a look at: [https://swift.org/blog/swift-4-1-released](https://swift.org/blog/swift-4-1-released/)
 
 You can use `#if targetEnvironment(simulator)` to check if your app runs in a simulator. This is really usefull, when you want to add some special handling for simulators, like taking a photo with a real device and using a dummy image in simulator. 
@@ -195,7 +247,7 @@ To cancel the rebase process early, run `git rebase --abort`.
 ## You have pushed your feature branch and want to use rebase?
 Do not use it, because you would have to use a `force push` and this will destroy the state of the repository for every other developer who has checked out the rebased branch before. Instead, you can use a simple merge to get the latest changes into your branch.
 
-# [git] Squash commits
+# [git] Squash
 
 `Do not force push! There is another solution most of the time.`
 
@@ -402,7 +454,6 @@ func convertToBlackAndWhite() -> UIImage {
 ```
 
 # [git] Ignore already tracked `XCUserstate`
-
 1. Quit Xcode
 2. Navigate to the project directory and execute the following commands
 ```ruby
