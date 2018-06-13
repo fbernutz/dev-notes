@@ -4,55 +4,31 @@ My personal list of things I once learned in iOS, Swift, CocoaPods and git (etc.
 
 ## Table of contents
 
-[[iOS] Target Environment Simulator](https://github.com/fbernutz/dev-notes#ios-target-environment-simulator)
-
-[[Xcode] Weird problems with IBDesignable](https://github.com/fbernutz/dev-notes#xcode-weird-problems-with-ibdesignable)
-
-[[iOS] Delay requests while searching using GCD](https://github.com/fbernutz/dev-notes#ios-delay-requests-while-searching-using-gcd)
-
-[[iOS] WebViewController](https://github.com/fbernutz/dev-notes#ios-webviewcontroller)
-
-[[iOS] Common Mistakes with Custom Fonts](https://github.com/fbernutz/dev-notes#ios-common-mistakes-with-custom-fonts)
-
-[[iOS] IBOutletCollection](https://github.com/fbernutz/dev-notes#ios-iboutletcollection)
-
-[[iOS] `debugPrint` in release environment](https://github.com/fbernutz/dev-notes#ios-debugprint-in-release-environment)
-
-[[Xcode] Set version number without fastlane](https://github.com/fbernutz/dev-notes#xcode-set-version-number-without-fastlane)
-
-[[iOS] Check for email addresses in String](https://github.com/fbernutz/dev-notes#ios-check-for-email-addresses-in-string)
-
-[[cocoapods] Using versions for pods](https://github.com/fbernutz/dev-notes#cocoapods-using-versions-for-pods)
-
-[[git] Rebase](https://github.com/fbernutz/dev-notes#git-rebase)
-
-[[git] Squash](https://github.com/fbernutz/dev-notes#git-squash)
-
-[[git] Useful git commands](https://github.com/fbernutz/dev-notes#git-useful-git-commands)
-
-[[iOS] StackView & Warnings](https://github.com/fbernutz/dev-notes#ios-stackview--warnings)
-
-[[iOS] Find error in plist](https://github.com/fbernutz/dev-notes#ios-find-error-in-plist)
-
-[[iOS] Right and LeftView in UITextField](https://github.com/fbernutz/dev-notes#ios-right-and-leftview-in-uitextfield)
-
-[[iOS] Dispatch Group](https://github.com/fbernutz/dev-notes#ios-dispatch-group)
-
-[[Xcode] po in debugger](https://github.com/fbernutz/dev-notes#xcode-po-in-debugger)
-
-[[iOS] ATS information](https://github.com/fbernutz/dev-notes#ios-ats-information)
-
-[[iOS] Attributed Text Helper](https://github.com/fbernutz/dev-notes#ios-attributed-text-helper)
-
-[[iOS] UITest helper](https://github.com/fbernutz/dev-notes#ios-uitest-helper)
-
-[[iOS] Configure UIKit elements on initializer](https://github.com/fbernutz/dev-notes#ios-configure-uikit-elements-on-initializer)
-
-[[iOS] Simple animation with UIImage](https://github.com/fbernutz/dev-notes#ios-simple-animation-with-uiimage)
-
-[[iOS] UIImage with black & white effect](https://github.com/fbernutz/dev-notes#ios-uiimage-with-black--white-effect)
-
-[[git] Ignore already tracked `XCUserstate`](https://github.com/fbernutz/dev-notes#git-ignore-already-tracked-xcuserstate)
+[[iOS] Target Environment Simulator](#ios-target-environment-simulator)\
+[[Xcode] Weird problems with IBDesignable](#xcode-weird-problems-with-ibdesignable)\
+[[iOS] Delay requests while searching using GCD](#ios-delay-requests-while-searching-using-gcd)\
+[[iOS] WebViewController](#ios-webviewcontroller)\
+[[iOS] Common Mistakes with Custom Fonts](#ios-common-mistakes-with-custom-fonts)\
+[[iOS] IBOutletCollection](#ios-iboutletcollection)\
+[[iOS] `debugPrint` in release environment](#ios-debugprint-in-release-environment)\
+[[Xcode] Set version number without fastlane](#xcode-set-version-number-without-fastlane)\
+[[iOS] Check for email addresses in String](#ios-check-for-email-addresses-in-string)\
+[[cocoapods] Using versions for pods](#cocoapods-using-versions-for-pods)\
+[[git] Rebase](#git-rebase)\
+[[git] Squash](#git-squash)\
+[[git] Useful git commands](#git-useful-git-commands)\
+[[iOS] StackView & Warnings](#ios-stackview--warnings)\
+[[iOS] Find error in plist](#ios-find-error-in-plist)\
+[[iOS] Right and LeftView in UITextField](#ios-right-and-leftview-in-uitextfield)\
+[[iOS] Dispatch Group](#ios-dispatch-group)\
+[[Xcode] po in debugger](#xcode-po-in-debugger)\
+[[iOS] ATS information](#ios-ats-information)\
+[[iOS] Attributed Text Helper](#ios-attributed-text-helper)\
+[[iOS] UITest helper](#ios-uitest-helper)\
+[[iOS] Configure UIKit elements on initializer](#ios-configure-uikit-elements-on-initializer)\
+[[iOS] Simple animation with UIImage](#ios-simple-animation-with-uiimage)\
+[[iOS] UIImage with black & white effect](#ios-uiimage-with-black--white-effect)\
+[[git] Ignore already tracked `XCUserstate`](#git-ignore-already-tracked-xcuserstate)
 
 # [iOS] Target Environment Simulator
 Have a look at: [https://swift.org/blog/swift-4-1-released](https://swift.org/blog/swift-4-1-released/)
