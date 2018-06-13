@@ -1,4 +1,4 @@
-# Felis personal dev notes ✌️
+# Felis dev notes ✌️
 
 My personal list of things I once learned in iOS, Swift, CocoaPods and git (etc.) and do not want to forget. The list is not ordered by any kind of type – only thought about some things and wrote them down.
 
