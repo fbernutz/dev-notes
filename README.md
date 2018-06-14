@@ -4,6 +4,7 @@ My personal list of things I once learned in iOS, Swift, CocoaPods and git (etc.
 
 ## Table of contents
 
+[[iOS] Localizing for plurals and variant widths using a stringsdict file](#ios-localizing-for-plurals-and-variant-widths-using-a-stringsdict-file)\
 [[iOS] Target Environment Simulator](#ios-target-environment-simulator)\
 [[Xcode] Weird problems with IBDesignable](#xcode-weird-problems-with-ibdesignable)\
 [[iOS] Delay requests while searching using GCD](#ios-delay-requests-while-searching-using-gcd)\
@@ -29,6 +30,95 @@ My personal list of things I once learned in iOS, Swift, CocoaPods and git (etc.
 [[iOS] Simple animation with UIImage](#ios-simple-animation-with-uiimage)\
 [[iOS] UIImage with black & white effect](#ios-uiimage-with-black--white-effect)\
 [[git] Ignore already tracked `XCUserstate`](#git-ignore-already-tracked-xcuserstate)
+
+# [iOS] Localizing for plurals and variant widths using a stringsdict file
+You can use a stringsdict file to add plural support for your strings or to add different strings for variant widths, e.g. a short expression, like "Hi" for small devices and a longer one, like "Welcome <Name>" for larger devices. Using the stringsdict file removes the extra logic for plural or variant widths support from your code to an easy to read xml file. 
+
+## Plurals example
+In practice you define a key in your `Localizable.stringsdict` and define the values for your plurals. Xcode will automatically define the different keys for the specific language. For german there is `zero`, `one` and `other` but for russian, there are more plural options. Xcode will automatically generate these keys, so you just have to add the correct values for the different strings.
+```xml
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>%d movie(s)</key>
+        <dict>
+            <key>NSStringLocalizedFormatKey</key>
+            <string>%#@movies@</string>
+            <key>movies</key>
+            <dict>
+                <key>NSStringFormatSpecTypeKey</key>
+                <string>NSStringPluralRuleType</string>
+                <key>NSStringFormatValueTypeKey</key>
+                <string>d</string>
+                <key>zero</key>
+                <string>Keine Filme</string>
+                <key>one</key>
+                <string>Ein Film</string>
+                <key>other</key>
+                <string>%d Filme</string>
+            </dict>
+        </dict>
+    </dict>
+</plist>
+```
+
+In your project you can define your string like that:
+```swift
+static func movies(for counter: Int) -> String {
+        return String.localizedStringWithFormat(NSLocalizedString("%d movie(s)", comment: "Movie(s)"), counter)
+}
+```
+_Important: Your key from `NSLocalizedString` has to be the same as in your `Localizable.stringsdict`._
+
+## Variant width example
+To specify different strings for variant widths will sometimes solves some layout issues and this is a better solution than to always use a short string, because there would be much white space on larger devices.
+
+Your `Localizable.stringsdict` can look like this:
+```xml 
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+    <dict>
+        <key>welcome.width</key>
+        <dict>
+            <key>NSStringVariableWidthRuleType</key>
+            <dict>
+                <key>1</key>
+                <string>Hi</string>
+                <key>30</key>
+                <string>Herzlich Willkommen</string>
+            </dict>
+        </dict>
+    </dict>
+</plist>
+```
+
+Like in the plurals example, it is important to use the same key in your swift declaration. 
+```swift 
+static let welcome = NSLocalizedString("welcome.width", comment: "Title for welcome")
+```
+There is one thing I don't understand with this. You set a value for the key and the compiler will automatically select the value for UIKit elements, but this did not work like I expected. 
+With `NSString.variantFittingPresentationWidth(_ width: Int) -> String` you can set the width directly and the value will be returned for the appropriated width. If you call the method with 30 or bigger `Herzlich Willkommen` will be returned and if you call it with 1..<30 `Hi` will be returned. But you need to define when which string will be used. I wrote a helper as extension for String to decide which string will be returned depending on the screen device. 
+```swift 
+import UIKit
+
+extension String {
+    var forWidth: String {
+        let width =
+            Int(UIScreen.main.bounds.width) > 320
+                ? 30
+                : 1
+        return (self as NSString).variantFittingPresentationWidth(width)
+    }
+}
+```
+In this case only for iPhone 5 or 5s the smaller string will be used. If you know any better solution, please let me know! 😉
+
+You call this helper every time the string is used, so the correct string will be returned from the `Localized.stringsdict`.
+```swift 
+static let welcome = NSLocalizedString("welcome.width", comment: "Title for welcome").forWidth
+```
 
 # [iOS] Target Environment Simulator
 Have a look at: [https://swift.org/blog/swift-4-1-released](https://swift.org/blog/swift-4-1-released/)
