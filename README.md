@@ -4,6 +4,7 @@ My personal list of things I once learned in iOS, Swift, CocoaPods and git (etc.
 
 ## Table of contents
 
+[[git] Trunk based development and feature toggles](#git-trunk-based-development-and-feature-toggles)\
 [[iOS] Localizing for plurals and variant widths using a stringsdict file](#ios-localizing-for-plurals-and-variant-widths-using-a-stringsdict-file)\
 [[iOS] Target Environment Simulator](#ios-target-environment-simulator)\
 [[Xcode] Weird problems with IBDesignable](#xcode-weird-problems-with-ibdesignable)\
@@ -30,6 +31,113 @@ My personal list of things I once learned in iOS, Swift, CocoaPods and git (etc.
 [[iOS] Simple animation with UIImage](#ios-simple-animation-with-uiimage)\
 [[iOS] UIImage with black & white effect](#ios-uiimage-with-black--white-effect)\
 [[git] Ignore already tracked `XCUserstate`](#git-ignore-already-tracked-xcuserstate)
+
+# [git] Trunk based development and feature toggles
+This was a new term for me, as I am mostly working with `git flow` at the moment. So I wrote together some points what trunk based development is and what I _think_ when it might be a good choice.
+
+### git flow
+These are some points I am thinking of when working with `git flow`.
+
+| 👍                                             | 👎                                                                    |
+|------------------------------------------------|-----------------------------------------------------------------------|
+| separate features                              | large merge conflicts (when feature branch is used for a longer time) |
+| independent from other developers              | frequently merging from main branch in feature branch                 |
+| "standard" CI possible                          | refactoring can be difficult                                              |
+| good visualized code reviews in gitlab with MR | interaction of features is tested when features are already merged    |
+Info: _"standard" CI means build a new dev-version-app when merged on develop and prod-version with tags._
+
+## What is trunk based development?
+= working on one main branch
+- activating features with feature toggles when they are finished
+- different features can be activated manually to test their interaction 
+- always pull the latest changes before committing
+
+### trunk based
+| 👍                                                           | 👎                                                    |
+|--------------------------------------------------------------|-------------------------------------------------------|
+| nearly synchronous development                               | different CI process                                  |
+| less merge conflicts                                         | many commits from different features (may look messy) |
+| timely correct history                                       | code review process is not so smooth                  |
+| easily testing interactions of features (during development) |                                                       |
+| faster releases (no merge before release)                    |                                                       |
+Info: _The "messy" commits can be solved with adding a ticket number in front of the commit message, e.g. `[ABC-01] Update README`. To build and deploy an application you could use manual git triggers with options to build and release a develop or a release version._
+
+## How can code reviews be integrated in process?
+- pushing changes on temporary branch (naming convention?)
+- do the code review (in gitlab with a MR - which will not be merged - or directly in Xcode)
+- fix discussions on temporary branch with additional commits
+- merge temporary branch on master with `git merge --squash` to have all the changes in one commit and set a meaningful commit message
+- delete the temporary branch (local and remote)
+
+## How can features be activated?
+- release version:
+    - activated from outside with a backend (e.g. with firebase?)
+    - activated with a local configuration, like xml-file
+- develop version: 
+    - activated with "secret gestures", like five-finger-tap, etc.
+    - activated with a local configuration, like xml-file
+- when features are controlled from outside the app
+    - features can be released (or stopped) without an app update
+    - easy A/B Tests possible
+
+## Feature toggles in Swift 
+This could look something like this:
+
+```swift
+enum Feature {
+    case login
+    case logout
+
+    var ticketNumber: String {
+        switch self {
+        case .login:
+            return "DS-01"
+        case .logout:
+            return "DS-02"
+        }
+    }
+
+    var isActive: Bool{
+        switch self {
+        case .login:
+            return true
+        case .logout:
+            return false
+        }
+    }
+}
+
+class FeatureManager {
+    var login = Feature.login
+    var logout = Feature.logout
+}
+
+func useNewLogin() {
+    print("new login")
+}
+
+func useLogin() {
+    print("old login")
+}
+
+if FeatureManager().login.isActive {
+    useNewLogin()
+} else {
+    useLogin()
+}
+```
+
+## Additional Information & ToDos
+- CI-Process
+    - actions like `analyze` and `tests` are running all the time
+    - build and deploy actions: using manual git triggers to release new apps (with option to release develop or release version)
+- Is there a limit for the number of developers for using trunk based development?
+- Xcode 10 has a better integrated source control which will be helpful with trunk based development
+- Code review takes some time? (can lead to problems with every process)
+- Working with "Mono-Repositories": conflicts or inconsequences will be found even earlier
+- Duplicated code during refactoring? 
+- Old features may be forgotten to be removed when new features are activated permanently 
+- Architectural refactoring will be difficult
 
 # [iOS] Localizing for plurals and variant widths using a stringsdict file
 You can use a stringsdict file to add plural support for your strings or to add different strings for variant widths, e.g. a short expression, like "Hi" for small devices and a longer one, like "Welcome <Name>" for larger devices. Using the stringsdict file removes the extra logic for plural or variant widths support from your code to an easy to read xml file. 
