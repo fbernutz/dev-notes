@@ -44,6 +44,7 @@ These are some points I am thinking of when working with `git flow`.
 | independent from other developers              | frequently merging from main branch in feature branch                 |
 | "standard" CI possible                          | refactoring can be difficult                                              |
 | good visualized code reviews in gitlab with MR | interaction of features is tested when features are already merged    |
+
 Info: _"standard" CI means build a new dev-version-app when merged on develop and prod-version with tags._
 
 ## What is trunk based development?
@@ -60,6 +61,7 @@ Info: _"standard" CI means build a new dev-version-app when merged on develop an
 | timely correct history                                       | code review process is not so smooth                  |
 | easily testing interactions of features (during development) |                                                       |
 | faster releases (no merge before release)                    |                                                       |
+
 Info: _The "messy" commits can be solved with adding a ticket number in front of the commit message, e.g. `[ABC-01] Update README`. To build and deploy an application you could use manual git triggers with options to build and release a develop or a release version._
 
 ## How can code reviews be integrated in process?
