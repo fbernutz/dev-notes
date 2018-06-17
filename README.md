@@ -115,10 +115,12 @@ extension String {
 ```
 In this case only for iPhone 5 or 5s the smaller string will be used. If you know any better solution, please let me know! 😉
 
-You call this helper every time the string is used, so the correct string will be returned from the `Localized.stringsdict`.
+You call this helper every time the string is used, so the correct string will be returned from the `Localizable.stringsdict`.
 ```swift 
 static let welcome = NSLocalizedString("welcome.width", comment: "Title for welcome").forWidth
 ```
+_Info:
+The `variantFittingPresentationWidth` won't work for some UI elements, like `UITabBarItem` and `UIPreviewAction`. So in these cases the correct string will be returned when you print them, but they are not displayed. This felt like an unexpected behaviour for me, so I filed my first bug reports: [rdar://41193537](https://openradar.appspot.com/41193537) and [rdar://41193359](https://openradar.appspot.com/41193359)_
 
 # [iOS] Target Environment Simulator
 Have a look at: [https://swift.org/blog/swift-4-1-released](https://swift.org/blog/swift-4-1-released/)
