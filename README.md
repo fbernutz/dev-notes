@@ -647,9 +647,11 @@ if FeatureManager().login.isActive {
 
 `Do not force push! There is another solution most of the time.`
 
+Have a look at: [github.com/k88hudson/git-flight-rules](https://github.com/k88hudson/git-flight-rules)
+
 ## When to rebase?
 
-Imagine, you are working on a feature branch, which is not pushed to remote yet (important) and you want to get the latest changes from another branch, like `master`.
+When you want to apply commits from another branch, like `master`, on top of your current local branch, like your feature branch.
 
 ## How to rebase?
 
@@ -669,18 +671,22 @@ Do not use it, because you would have to use a `force push` and this will destro
 
 `Do not force push! There is another solution most of the time.`
 
+Have a look at: [github.com/k88hudson/git-flight-rules](https://github.com/k88hudson/git-flight-rules)
+
 ## When to squash commits?
 
-When you are working on a feature for some time and when you want to merge it, the exact steps you made are most of the time not relevant anymore (but they can be, of course). So while working on a feature you can commit wildly and you can try things out and revert that later, you can focus on the feature. When the feature is finished and about to be merged, you think about a meaningful commit message and can commit all the changes in one commit.
+When you want to merge a branch with just one clean commit. 
+
+This is the case when working in feature branches. When you want to merge your feature, the exact steps you made are not relevant anymore most of the time (but they can be, of course). So while working on a feature you can commit wildly and you can try things out and revert them later. Basically, you can focus on the feature. When the feature is finished and about to be merged, you think about a meaningful commit message and with `git merge <feature-branch> --squash` you can commit all the changes in only one commit.
 
 ## How to squash commits?
 
-1. You checkout the branch you want to integrate the new feature with `git checkout <branch>`.
+1. You checkout the branch you want to integrate the new feature, with `git checkout <branch>`.
 2. Use `git merge <feature-branch> --squash` to squash all the commits from the feature branch. You now have all the changes unstaged.
-3. You can test your application once again and when everything is running, think about a meaningful commit message and commit all the changes on the branch.
+3. You can test your application once again and when everything is running, choose a meaningful commit message and commit all the changes on the branch.
 4. Now you can push the feature with `git push` and delete the feature branch on local and remote side.
 
-There is a similar option for this directly integrated on GitHub as well. So you can merge features from a pull request with one commit.
+There is a similar option for this directly integrated in GitHub as well. So you can merge features from a pull request with one single commit.
 
 # [git] Useful git commands
 
