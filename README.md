@@ -419,6 +419,8 @@ Getting Ready for ATS Enforcement in 2017
 * non breaking space: `\u00a0`
 * non breaking hyphen: `\u2011`
 
+To use this in `Localizable.strings`, you have to use all caps (like `\U00A0`). Found [here](https://stackoverflow.com/questions/5105053/iphone-uilabel-non-breaking-space#comment24881735_15696729).
+
 ## soft hyphen
 
 Have a look at: [http://stackoverflow.com/questions/33727659/how-to-perform-hyphenation-on-a-uilabel-sensitive-to-a-language-different-from-t](http://stackoverflow.com/questions/33727659/how-to-perform-hyphenation-on-a-uilabel-sensitive-to-a-language-different-from-t)
