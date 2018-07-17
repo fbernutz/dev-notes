@@ -695,6 +695,10 @@ There is a similar option for this directly integrated in GitHub as well. So you
 * `git reflog` to see the history of the latest commands, every command has a number
 * `git reset HEAD@{<number>}` to get back to the state of when the command was executed.
 
+Two useful websites:
+* A git choose-your-own-adventure: [On undoing, fixing, or removing commits in git](http://sethrobertson.github.io/GitFixUm/fixup.html)
+* Oh shit git: [ohshitgit.com](http://ohshitgit.com/)
+
 # [git] Ignore already tracked `XCUserstate`
 
 1. Quit Xcode
