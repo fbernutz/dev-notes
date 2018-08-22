@@ -257,6 +257,23 @@ Have a look at: [http://swiftiostutorials.com/use-nslog-debugging/](http://swift
 
 `debugPrint` has nothing to do with debug and release environments. It just gives you some information more than the normal `print`.
 
+To solve this, you can overwrite the `print` function with the following code and even add a `releasePrint` to print in release environment:
+
+```swift
+
+func releasePrint(_ object: Any) {
+    Swift.print(object)
+}
+
+func print(_ object: Any) {
+    #if DEBUG
+    Swift.print(object)
+    #endif
+}
+```
+
+To use the `DEBUG` flag in code, you have to set the custom flag "DEBUG" in Build Settings > Active Compilation Conditions > Debug.
+
 # [iOS] Check for email addresses in String
 
 Have a look at: [http://developer.bombbomb.com/blog/2017/10/24/swift-data-detection/](http://developer.bombbomb.com/blog/2017/10/24/swift-data-detection/).
