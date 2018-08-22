@@ -629,23 +629,10 @@ enum Feature {
     }
 }
 
-class FeatureManager {
-    var login = Feature.login
-    var logout = Feature.logout
-}
-
-func useNewLogin() {
+if Feature.login.isActive {
     print("new login")
-}
-
-func useLogin() {
-    print("old login")
-}
-
-if FeatureManager().login.isActive {
-    useNewLogin()
 } else {
-    useLogin()
+    print("old login")
 }
 ```
 
