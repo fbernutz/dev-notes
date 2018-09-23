@@ -1,9 +1,19 @@
 # Felis dev notes ✌️
 
-My personal list of things I once learned in iOS, Swift, CocoaPods and git (etc.) and do not want to forget. The list is not ordered by any kind of type – only thought about some things and wrote them down.
+My personal list of some things I learned in ... 
+* iOS
+* Swift
+* CocoaPods
+* git
+* Android
+* Kotlin 
+
+... and do not want to forget. The list is not ordered by any kind of type – only thought about writing some things down, so I can have a look at it at a later time.
 
 ## Table of contents
 
+[[Android] Logging](#android-logging)\
+[[Kotlin] Swift is like Kotlin](#kotlin-swift-is-like-kotlin)\
 [[iOS] Localizing for plurals and variant widths using a stringsdict file](#ios-localizing-for-plurals-and-variant-widths-using-a-stringsdict-file)\
 [[iOS] Target Environment Simulator](#ios-target-environment-simulator)\
 [[iOS] Delay requests while searching using GCD](#ios-delay-requests-while-searching-using-gcd)\
@@ -31,6 +41,34 @@ My personal list of things I once learned in iOS, Swift, CocoaPods and git (etc.
 [[git] Squash](#git-squash)\
 [[git] Useful git commands](#git-useful-git-commands)\
 [[git] Ignore already tracked `XCUserstate`](#git-ignore-already-tracked-xcuserstate)
+
+# [Android] Logging
+
+Have a look at the official documentation: [https://developer.android.com/reference/android/util/Log](https://developer.android.com/reference/android/util/Log)
+
+Import the `Log` class with `import android.util.Log`. There are different log leves, `d` is for Debug and `e` for error. 
+
+Two examples how to log something: 
+
+```kotlin
+android.util.Log.d("feli", "feli: Logging is nice!")
+```
+
+```java
+android.util.Log.e("feli", "feli: " + e.getMessage(), e);
+```
+
+You see the logs printed in the Logcat section in Android Studio or print them out to your console with: 
+
+```
+adb logcat -s feli
+```
+
+More information about how to use `logcat`: [https://developer.android.com/studio/command-line/logcat](https://developer.android.com/studio/command-line/logcat)
+
+# [Kotlin] Swift is like Kotlin
+
+To see the parallels, have a look at: [http://nilhcem.com/swift-is-like-kotlin/](http://nilhcem.com/swift-is-like-kotlin/)
 
 # [iOS] Localizing for plurals and variant widths using a stringsdict file
 
