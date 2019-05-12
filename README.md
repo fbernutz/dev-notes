@@ -14,6 +14,7 @@ My personal list of some things I learned in ...
 
 [[Android] Logging](#android-logging)\
 [[Kotlin] Swift is like Kotlin](#kotlin-swift-is-like-kotlin)\
+[[iOS] Converting between String and Data](#ios-converting-between-string-and-data)\
 [[iOS] Localizing for plurals and variant widths using a stringsdict file](#ios-localizing-for-plurals-and-variant-widths-using-a-stringsdict-file)\
 [[iOS] Target Environment Simulator](#ios-target-environment-simulator)\
 [[iOS] Delay requests while searching using GCD](#ios-delay-requests-while-searching-using-gcd)\
@@ -69,6 +70,31 @@ More information about how to use `logcat`: [https://developer.android.com/studi
 # [Kotlin] Swift is like Kotlin
 
 To see the parallels, have a look at: [http://nilhcem.com/swift-is-like-kotlin/](http://nilhcem.com/swift-is-like-kotlin/)
+
+# [iOS] Converting between String and Data
+
+Idea from: [https://twitter.com/johnsundell/status/1117812175593197568](https://twitter.com/johnsundell/status/1117812175593197568)
+
+Without optionals:
+
+```swift
+// String -> Data
+let data = Data("String".utf8)
+
+// Data -> String
+let string = String(decoding: data, as: UTF8.self)
+```
+
+With optionals:
+
+
+```swift
+// String -> Data?
+let data = "String".data(using: .utf8)
+
+// Data -> String?
+let optionalString = String(data: data, encoding: .utf8) 
+```
 
 # [iOS] Localizing for plurals and variant widths using a stringsdict file
 
