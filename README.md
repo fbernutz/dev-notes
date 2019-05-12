@@ -13,6 +13,7 @@ My personal list of some things I learned in ...
 ## Table of contents
 
 [[Android] Logging](#android-logging)\
+[[Kotlin] Integrate `ktlint` into project](#kotlin-integrate-ktlint-into-project)\
 [[Kotlin] Swift is like Kotlin](#kotlin-swift-is-like-kotlin)\
 [[iOS] Converting between String and Data](#ios-converting-between-string-and-data)\
 [[iOS] Localizing for plurals and variant widths using a stringsdict file](#ios-localizing-for-plurals-and-variant-widths-using-a-stringsdict-file)\
@@ -66,6 +67,59 @@ adb logcat -s feli
 ```
 
 More information about how to use `logcat`: [https://developer.android.com/studio/command-line/logcat](https://developer.android.com/studio/command-line/logcat)
+
+# [Kotlin] Integrate `ktlint` into project
+
+To enforce similar code style and conventions, it's a good idea to integrate a linter, like [`ktlint`](https://github.com/pinterest/ktlint). 
+
+Add the following to `app/build.gradle`:
+
+```gradle
+repositories {
+    jcenter()
+}
+
+configurations {
+    ktlint
+}
+
+dependencies {
+    //...
+    ktlint "com.pinterest:ktlint:0.32.0"
+}
+
+task ktlint(type: JavaExec, group: "verification") {
+    description = "Check Kotlin code style."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "src/**/*.kt"
+    // to generate report in checkstyle format prepend following args:
+    // "--reporter=plain", "--reporter=checkstyle,output=${buildDir}/ktlint.xml"
+    // see https://github.com/pinterest/ktlint#usage for more
+}
+check.dependsOn ktlint
+
+task ktlintFormat(type: JavaExec, group: "formatting") {
+    description = "Fix Kotlin code style deviations."
+    classpath = configurations.ktlint
+    main = "com.pinterest.ktlint.Main"
+    args "-F", "src/**/*.kt"
+}
+```
+
+To check code style, run:
+
+```
+./gradlew ktlint
+```
+
+To run formatter:
+
+```
+./gradle ktlintFormat
+```
+
+For further information, see the [official installation guide for gradle](https://github.com/pinterest/ktlint#-with-gradle).
 
 # [Kotlin] Swift is like Kotlin
 
