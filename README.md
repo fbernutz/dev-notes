@@ -15,6 +15,9 @@ My personal list of some things I learned in ...
 [[Android] Logging](#android-logging)\
 [[Kotlin] Integrate `ktlint` into project](#kotlin-integrate-ktlint-into-project)\
 [[Kotlin] Swift is like Kotlin](#kotlin-swift-is-like-kotlin)\
+[[iOS] Clean StatusBar](#ios-clean-statusbar)\
+[[iOS] Find unused resources](#ios-find-unused-resources)\
+[[iOS] Speed up WWDC Videos](#ios-speed-up-wwdc-videos)\
 [[iOS] Converting between String and Data](#ios-converting-between-string-and-data)\
 [[iOS] Localizing for plurals and variant widths using a stringsdict file](#ios-localizing-for-plurals-and-variant-widths-using-a-stringsdict-file)\
 [[iOS] Target Environment Simulator](#ios-target-environment-simulator)\
@@ -124,6 +127,31 @@ For further information, see the [official installation guide for gradle](https:
 # [Kotlin] Swift is like Kotlin
 
 To see the parallels, have a look at: [http://nilhcem.com/swift-is-like-kotlin/](http://nilhcem.com/swift-is-like-kotlin/)
+
+# [iOS] Clean StatusBar
+
+See [here](https://www.jessesquires.com/blog/overriding-status-bar-settings-ios-simulator/).
+
+Run:
+
+```
+// Xcode 11: Use Terminal to set the Status Bar of all booted Simulator devices to the most common variables.
+xcrun simctl status_bar booted override --time "9:41" --batteryState charged --batteryLevel 100 --cellularMode active
+```
+
+# [iOS] Find unused resources
+
+See [here](https://www.avanderlee.com/optimization/unused-images-clean-up/).
+
+Use `Fengniao` [GitHub Repo](https://github.com/onevcat/FengNiao) to find unused resources in Xcode. Install it and exclude the folder you want to skip: `fengniao --exclude Pods fastlane SnapshotTests DerivedData` 
+
+# [iOS] Speed up WWDC Videos
+
+If you want to increase the video play rate of the sessions of WWDC, open Safari Dev Tools and type the following into the console. You'll see the video in 140% speed. 
+
+```
+document.getElementsByTagName('video')[0].playbackRate = 1.4;
+```
 
 # [iOS] Converting between String and Data
 
