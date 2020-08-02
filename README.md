@@ -34,6 +34,7 @@ My personal list of some things I learned in ...
   - [#02: Simple animation with UIImage](#02-simple-animation-with-uiimage)
   - [#01: UIImage with black & white effect](#01-uiimage-with-black--white-effect)
 - [Xcode](#xcode)
+  - [#08: Support new iOS in old Xcode](#08-support-new-ios-in-old-xcode)
   - [#07: Clear Cache for Launch Screen](#07-clear-cache-for-launch-screen)
   - [#06: Open Deep Link in Simulator](#06-open-deep-link-in-simulator)
   - [#05: Select next occurrence](#05-select-next-occurrence)
@@ -593,6 +594,12 @@ func convertToBlackAndWhite() -> UIImage {
 ```
 
 ## Xcode
+
+### #08: Support new iOS in old Xcode
+
+Currently: Using iOS 14 devices with Xcode 11.5 (instead of Xcode 12)
+
+See this [gist by @steipete](https://gist.github.com/steipete/d9b44d8e9f341e81414e86d7ff8fb62d).
 
 ### #07: Clear Cache for Launch Screen
 
