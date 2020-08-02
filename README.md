@@ -34,6 +34,7 @@ My personal list of some things I learned in ...
   - [#02: Simple animation with UIImage](#02-simple-animation-with-uiimage)
   - [#01: UIImage with black & white effect](#01-uiimage-with-black--white-effect)
 - [Xcode](#xcode)
+  - [#05: Select next occurrence](#05-select-next-occurrence)
   - [#04: Adding identifier to constraints](#04-adding-identifier-to-constraints)
   - [#03: Weird problems with IBDesignable](#03-weird-problems-with-ibdesignable)
   - [#02: Set version number without fastlane](#02-set-version-number-without-fastlane)
@@ -590,6 +591,14 @@ func convertToBlackAndWhite() -> UIImage {
 ```
 
 ## Xcode
+
+### #05: Select next occurrence
+
+1. select the thing you want to edit
+2. press-and-hold ⌥⌘E to "select next occurrence" until everything’s selected
+3. type in the replacement; all of ‘em get changed
+
+Found [in twitter by @davedelong](https://twitter.com/davedelong/status/1147229851373326336).
 
 ### #04: Adding identifier to constraints
 
