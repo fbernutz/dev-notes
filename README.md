@@ -34,6 +34,7 @@ My personal list of some things I learned in ...
   - [#02: Simple animation with UIImage](#02-simple-animation-with-uiimage)
   - [#01: UIImage with black & white effect](#01-uiimage-with-black--white-effect)
 - [Xcode](#xcode)
+  - [#07: Clear Cache for Launch Screen](#07-clear-cache-for-launch-screen)
   - [#06: Open Deep Link in Simulator](#06-open-deep-link-in-simulator)
   - [#05: Select next occurrence](#05-select-next-occurrence)
   - [#04: Adding identifier to constraints](#04-adding-identifier-to-constraints)
@@ -592,6 +593,26 @@ func convertToBlackAndWhite() -> UIImage {
 ```
 
 ## Xcode
+
+### #07: Clear Cache for Launch Screen
+
+The system caches resources from the launch screen. When changing the launch screen, this can be annoying.
+
+```swift
+import UIKit
+
+public extension UIApplication {
+    func clearLaunchScreenCache() {
+        do {
+            try FileManager.default.removeItem(atPath: NSHomeDirectory()+"/Library/SplashBoard")
+        } catch {
+            print("Failed to delete launch screen cache: \(error)")
+        }
+    }
+}
+```
+
+Found [here](https://rambo.codes/posts/2019-12-09-clearing-your-apps-launch-screen-cache-on-ios).
 
 ### #06: Open Deep Link in Simulator
 
