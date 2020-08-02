@@ -10,6 +10,7 @@ My personal list of some things I learned in ...
 ... and do not want to forget. Some things might be outdated.
 
 - [iOS](#ios)
+  - [#24: Deselect selected Row](#24-deselect-selected-row)
   - [#23: Using specific versions for CocoaPods](#23-using-specific-versions-for-cocoapods)
   - [#22: Clean StatusBar](#22-clean-statusbar)
   - [#21: Find unused resources](#21-find-unused-resources)
@@ -56,6 +57,33 @@ My personal list of some things I learned in ...
   - [#01: Swift is like Kotlin](#01-swift-is-like-kotlin)
 
 ## iOS
+
+### #24: Deselect selected Row
+
+How to deselect the selected row/item so it happens alongside the navigation back animation (including when using the interactive pop gesture):
+
+```swift
+extension UITableView {
+    func deselectRow(along transitionCoordinator: UIViewControllerTransitionCoordinator?) {
+        guard let selectedIndexPath = indexPathForSelectedRow else { return }
+
+        guard let coordinator = transitionCoordinator else {
+            deselectRow(at: selectedIndexPath, animated: false)
+            return
+        }
+
+        coordinator.animate(alongsideTransition: { _ in
+            self.deselectRow(at: selectedIndexPath, animated: true)
+        }) { (context) in
+            if context.isCancelled {
+                self.selectRow(at: selectedIndexPath, animated: false, scrollPosition: .none)
+            }
+        }
+    }
+}
+```
+
+Found [in twitter by @smileyborg](https://twitter.com/smileyborg/status/1279473615553982464).
 
 ### #23: Using specific versions for CocoaPods
 
