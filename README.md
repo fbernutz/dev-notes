@@ -34,6 +34,7 @@ My personal list of some things I learned in ...
   - [#02: Simple animation with UIImage](#02-simple-animation-with-uiimage)
   - [#01: UIImage with black & white effect](#01-uiimage-with-black--white-effect)
 - [Xcode](#xcode)
+  - [#04: Adding identifier to constraints](#04-adding-identifier-to-constraints)
   - [#03: Weird problems with IBDesignable](#03-weird-problems-with-ibdesignable)
   - [#02: Set version number without fastlane](#02-set-version-number-without-fastlane)
   - [#01: `po` in debugger](#01-po-in-debugger)
@@ -590,6 +591,17 @@ func convertToBlackAndWhite() -> UIImage {
 
 ## Xcode
 
+### #04: Adding identifier to constraints
+
+You can add identifier to constraints in code or in Storyboard. This makes it easier when you need to debug.
+
+```swift
+let constraint = topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor)
+constraint.identifier = "ViewXYToTop"
+```
+
+Found [in twitter by @twostraws](https://twitter.com/twostraws/status/1082939762363850752).
+
 ### #03: Weird problems with IBDesignable
 
 When you have some weird problems with IBDesinable, try `killall ibtoold` and test again.
@@ -761,7 +773,7 @@ Have a look at: [github.com/k88hudson/git-flight-rules](https://github.com/k88hu
 
 #### When to squash commits?
 
-When you want to merge a branch with just one clean commit. 
+When you want to merge a branch with just one clean commit.
 
 This is the case when working in feature branches. When you want to merge your feature, the exact steps you made are not relevant anymore most of the time (but they can be, of course). So while working on a feature you can commit wildly and you can try things out and revert them later. Basically, you can focus on the feature. When the feature is finished and about to be merged, you think about a meaningful commit message and with `git merge <feature-branch> --squash` you can commit all the changes in only one commit.
 
@@ -789,6 +801,7 @@ git bisect good adf71de61 # worked in this commit
 * `git checkout develop -- <path/to/file>` to reset a file to the state on develop.
 
 Two useful websites:
+
 * A git choose-your-own-adventure: [On undoing, fixing, or removing commits in git](http://sethrobertson.github.io/GitFixUm/fixup.html)
 * Oh shit git: [ohshitgit.com](http://ohshitgit.com/)
 
@@ -841,7 +854,7 @@ android.util.Log.e("feli", "feli: " + e.getMessage(), e);
 
 You see the logs printed in the Logcat section in Android Studio or print them out to your console with: 
 
-```
+```bash
 adb logcat -s feli
 ```
 
@@ -888,13 +901,13 @@ task ktlintFormat(type: JavaExec, group: "formatting") {
 
 To check code style, run:
 
-```
+```bash
 ./gradlew ktlint
 ```
 
 To run formatter:
 
-```
+```bash
 ./gradle ktlintFormat
 ```
 
