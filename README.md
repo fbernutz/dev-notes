@@ -776,6 +776,15 @@ There is a similar option for this directly integrated in GitHub as well. So you
 
 * `git reflog` to see the history of the latest commands, every command has a number
 * `git reset HEAD@{<number>}` to get back to the state of when the command was executed.
+* `git bisect` to find the commit which introduced a bug.
+
+```bash
+git bisect start
+git bisect bad # current version not working
+git bisect good adf71de61 # worked in this commit
+```
+
+* `git checkout develop -- <path/to/file>` to reset a file to the state on develop.
 
 Two useful websites:
 * A git choose-your-own-adventure: [On undoing, fixing, or removing commits in git](http://sethrobertson.github.io/GitFixUm/fixup.html)
