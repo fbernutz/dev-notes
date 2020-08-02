@@ -43,6 +43,8 @@ My personal list of some things I learned in ...
   - [#03: Squash](#03-squash)
   - [#02: Useful git commands](#02-useful-git-commands)
   - [#01: Ignore already tracked `XCUserstate`](#01-ignore-already-tracked-xcuserstate)
+- [HTML](#html)
+  - [#01: `<details>` and `<summary>`](#01-details-and-summary)
 - [Android](#android)
   - [#03: Logging](#03-logging)
   - [#02: Integrate `ktlint` into project](#02-integrate-ktlint-into-project)
@@ -801,6 +803,23 @@ git commit -m "Removed file that shouldn't be tracked"
 ```
 3. Change `ProjectFolder` in the example above to the name of your project
 4. Relaunch Xcode and do a commit and verify that the `xcuserstate` file is no longer listed.
+
+## HTML
+
+### #01: `<details>` and `<summary>`
+
+Use `<details>` and `<summary>` in GitHub to collapse large information in PR descriptions or comments.
+
+```HTML
+<details>
+    <summary>Screenshot</summary>
+
+    ![name](link)
+
+</details>
+```
+
+Found [in twitter by @ashfurrow](https://twitter.com/ashfurrow/status/1100781360288014336).
 
 ## Android
 
