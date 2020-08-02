@@ -34,6 +34,7 @@ My personal list of some things I learned in ...
   - [#02: Simple animation with UIImage](#02-simple-animation-with-uiimage)
   - [#01: UIImage with black & white effect](#01-uiimage-with-black--white-effect)
 - [Xcode](#xcode)
+  - [#06: Open Deep Link in Simulator](#06-open-deep-link-in-simulator)
   - [#05: Select next occurrence](#05-select-next-occurrence)
   - [#04: Adding identifier to constraints](#04-adding-identifier-to-constraints)
   - [#03: Weird problems with IBDesignable](#03-weird-problems-with-ibdesignable)
@@ -591,6 +592,16 @@ func convertToBlackAndWhite() -> UIImage {
 ```
 
 ## Xcode
+
+### #06: Open Deep Link in Simulator
+
+To test your apps deep links, you can open a deep link in the simulator like this:
+
+```bash
+xcrun simctl openurl booted "https://your-deep-link"
+```
+
+Found [in twitter by @alex_v_bush](https://twitter.com/alex_v_bush/status/1156917502942822401).
 
 ### #05: Select next occurrence
 
