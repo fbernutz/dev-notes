@@ -10,6 +10,7 @@ My personal list of some things I learned in ...
 ... and do not want to forget. Some things might be outdated.
 
 - [iOS](#ios)
+  - [#23: Using specific versions for CocoaPods](#23-using-specific-versions-for-cocoapods)
   - [#22: Clean StatusBar](#22-clean-statusbar)
   - [#21: Find unused resources](#21-find-unused-resources)
   - [#20: Speed up WWDC Videos](#20-speed-up-wwdc-videos)
@@ -32,8 +33,6 @@ My personal list of some things I learned in ...
   - [#03: Configure UIKit elements on initializer](#03-configure-uikit-elements-on-initializer)
   - [#02: Simple animation with UIImage](#02-simple-animation-with-uiimage)
   - [#01: UIImage with black & white effect](#01-uiimage-with-black--white-effect)
-- [CocoaPods](#cocoapods)
-  - [#01: Using versions for pods](#01-using-versions-for-pods)
 - [Xcode](#xcode)
   - [#03: Weird problems with IBDesignable](#03-weird-problems-with-ibdesignable)
   - [#02: Set version number without fastlane](#02-set-version-number-without-fastlane)
@@ -50,6 +49,14 @@ My personal list of some things I learned in ...
   - [#01: Swift is like Kotlin](#01-swift-is-like-kotlin)
 
 ## iOS
+
+### #23: Using specific versions for CocoaPods
+
+Have a look at: [http://guides.cocoapods.org/using/the-podfile.html](http://guides.cocoapods.org/using/the-podfile.html).
+
+* `~> 0.1.2` will get you a version up to 0.2 (but not including 0.2 and higher)
+* `~> 0.1` will get you a version up to 1.0 (but not including 1.0 and higher)
+* `~> 0` will get you a version of 0 and higher (same as if it was omitted)
 
 ### #22: Clean StatusBar
 
@@ -578,16 +585,6 @@ func convertToBlackAndWhite() -> UIImage {
 	return UIImage(CGImage: CIContext(options:nil).createCGImage(filter.outputImage!, fromRect: filter.outputImage!.extent))
 }
 ```
-
-## CocoaPods
-
-### #01: Using versions for pods
-
-Have a look at: [http://guides.cocoapods.org/using/the-podfile.html](http://guides.cocoapods.org/using/the-podfile.html).
-
-* `~> 0.1.2` will get you a version up to 0.2 (but not including 0.2 and higher)
-* `~> 0.1` will get you a version up to 1.0 (but not including 1.0 and higher)
-* `~> 0` will get you a version of 0 and higher (same as if it was omitted)
 
 ## Xcode
 
